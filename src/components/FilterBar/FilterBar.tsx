@@ -1,4 +1,5 @@
-import type { TodoFilter } from '../types';
+import type { TodoFilter } from '../../types';
+import styles from './FilterBar.module.css';
 
 interface FilterBarProps {
   filter: TodoFilter;
@@ -22,19 +23,19 @@ export function FilterBar({
   onClearCompleted,
 }: FilterBarProps) {
   return (
-    <div className="filter-bar">
-      <span className="filter-bar__counter">
+    <div className={styles.bar}>
+      <span className={styles.counter}>
         {pluralize(activeCount, 'Осталась', 'Осталось', 'Осталось')}{' '}
         {activeCount}{' '}
         {pluralize(activeCount, 'задача', 'задачи', 'задач')}
       </span>
 
-      <div className="filter-bar__buttons" role="group" aria-label="Фильтр задач">
+      <div className={styles.buttons} role="group" aria-label="Фильтр задач">
         {FILTERS.map(({ value, label }) => (
           <button
             key={value}
             type="button"
-            className={`filter-bar__button${filter === value ? ' filter-bar__button--active' : ''}`}
+            className={`${styles.button}${filter === value ? ` ${styles.active}` : ''}`}
             aria-pressed={filter === value}
             onClick={() => onFilterChange(value)}
           >
@@ -46,7 +47,7 @@ export function FilterBar({
       {hasCompleted && (
         <button
           type="button"
-          className="filter-bar__clear"
+          className={styles.clear}
           onClick={onClearCompleted}
         >
           Удалить выполненные

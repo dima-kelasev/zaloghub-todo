@@ -1,5 +1,6 @@
-import type { Todo } from '../types';
-import { TodoItem } from './TodoItem';
+import type { Todo } from '../../types';
+import { TodoItem } from '../TodoItem';
+import styles from './TodoList.module.css';
 
 interface TodoListProps {
   todos: Todo[];
@@ -11,7 +12,7 @@ interface TodoListProps {
 export function TodoList({ todos, hasAnyTodos, onToggle, onRemove }: TodoListProps) {
   if (todos.length === 0) {
     return (
-      <p className="todo-list__empty">
+      <p className={styles.empty}>
         {hasAnyTodos
           ? 'По выбранному фильтру задач нет'
           : 'Пока задач нет — добавьте первую!'}
@@ -20,7 +21,7 @@ export function TodoList({ todos, hasAnyTodos, onToggle, onRemove }: TodoListPro
   }
 
   return (
-    <ul className="todo-list">
+    <ul className={styles.list}>
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}

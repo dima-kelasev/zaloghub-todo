@@ -1,0 +1,23 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 64px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  padding: 28px;
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+.title {
+  margin: 0 0 20px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}

@@ -38,21 +38,35 @@ npm run preview
 ```
 src/
 ├── components/
-│   ├── FilterBar.tsx    # фильтры, счётчик, очистка выполненных
-│   ├── TodoInput.tsx    # форма добавления задачи
-│   ├── TodoItem.tsx     # отдельная задача
-│   └── TodoList.tsx     # список задач и пустые состояния
+│   ├── FilterBar/
+│   │   ├── FilterBar.tsx
+│   │   ├── FilterBar.module.css
+│   │   └── index.ts
+│   ├── TodoInput/
+│   │   ├── TodoInput.tsx
+│   │   ├── TodoInput.module.css
+│   │   └── index.ts
+│   ├── TodoItem/
+│   │   ├── TodoItem.tsx
+│   │   ├── TodoItem.module.css
+│   │   └── index.ts
+│   └── TodoList/
+│       ├── TodoList.tsx
+│       ├── TodoList.module.css
+│       └── index.ts
 ├── hooks/
 │   └── useTodos.ts      # состояние задач + синхронизация с localStorage
 ├── App.tsx              # композиция компонентов
+├── App.module.css       # стили корневого layout
 ├── main.tsx             # точка входа
-├── index.css            # стили (без сторонних библиотек)
+├── index.css            # глобальные стили: дизайн-токены, сброс
 └── types.ts             # общие типы Todo и TodoFilter
 ```
 
 ## Принятые решения
 
 - Вся логика работы с задачами вынесена в кастомный хук `useTodos`, компоненты остаются «глупыми» и отвечают только за отображение.
+- Каждый компонент живёт в своей папке вместе со своим CSS-модулем (`Component.module.css`) — стили изолированы, коллизий имён нет. Глобально в `index.css` остаются только дизайн-токены (CSS-переменные) и сброс.
 - Чтение из `localStorage` выполняется лениво (один раз при инициализации `useState`), запись — через `useEffect` при каждом изменении списка.
 - Данные из `localStorage` валидируются при загрузке: повреждённая запись не уронит приложение.
 - Для идентификаторов используется `crypto.randomUUID()`.

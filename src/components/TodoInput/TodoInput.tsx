@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import styles from './TodoInput.module.css';
 
 interface TodoInputProps {
   onAdd: (text: string) => boolean;
@@ -23,13 +24,14 @@ export function TodoInput({ onAdd }: TodoInputProps) {
   };
 
   return (
-    <form className="todo-input" onSubmit={handleSubmit} noValidate>
-      <div className="todo-input__row">
+    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+      <div className={styles.row}>
         <label className="visually-hidden" htmlFor="new-todo">
           Новая задача
         </label>
         <input
           id="new-todo"
+          className={styles.input}
           type="text"
           value={value}
           onChange={(event) => {
@@ -41,10 +43,12 @@ export function TodoInput({ onAdd }: TodoInputProps) {
           aria-invalid={showError}
           aria-describedby={showError ? 'new-todo-error' : undefined}
         />
-        <button type="submit">Добавить</button>
+        <button className={styles.button} type="submit">
+          Добавить
+        </button>
       </div>
       {showError && (
-        <p className="todo-input__error" id="new-todo-error" role="alert">
+        <p className={styles.error} id="new-todo-error" role="alert">
           Задача не может быть пустой
         </p>
       )}

@@ -1,4 +1,5 @@
-import type { Todo } from '../types';
+import type { Todo } from '../../types';
+import styles from './TodoItem.module.css';
 
 interface TodoItemProps {
   todo: Todo;
@@ -8,18 +9,19 @@ interface TodoItemProps {
 
 export function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
   return (
-    <li className={`todo-item${todo.completed ? ' todo-item--completed' : ''}`}>
-      <label className="todo-item__label">
+    <li className={`${styles.item}${todo.completed ? ` ${styles.completed}` : ''}`}>
+      <label className={styles.label}>
         <input
+          className={styles.checkbox}
           type="checkbox"
           checked={todo.completed}
           onChange={() => onToggle(todo.id)}
         />
-        <span className="todo-item__text">{todo.text}</span>
+        <span className={styles.text}>{todo.text}</span>
       </label>
       <button
         type="button"
-        className="todo-item__remove"
+        className={styles.remove}
         onClick={() => onRemove(todo.id)}
         aria-label={`Удалить задачу «${todo.text}»`}
       >

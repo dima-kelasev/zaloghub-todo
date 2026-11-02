@@ -2,6 +2,7 @@ import { FilterBar } from './components/FilterBar';
 import { TodoInput } from './components/TodoInput';
 import { TodoList } from './components/TodoList';
 import { useTodos } from './hooks/useTodos';
+import styles from './App.module.css';
 
 export default function App() {
   const {
@@ -18,9 +19,9 @@ export default function App() {
   } = useTodos();
 
   return (
-    <main className="app">
-      <div className="app__card">
-        <h1 className="app__title">Список задач</h1>
+    <main className={styles.app}>
+      <div className={styles.card}>
+        <h1 className={styles.title}>Список задач</h1>
 
         <TodoInput onAdd={addTodo} />
 
