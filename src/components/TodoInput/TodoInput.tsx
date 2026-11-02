@@ -18,7 +18,6 @@ export function TodoInput({ onAdd }: TodoInputProps) {
       setValue('');
       setShowError(false);
     } else {
-      // Пустая строка или одни пробелы — показываем подсказку
       setShowError(true);
     }
   };
