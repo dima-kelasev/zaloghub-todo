@@ -2,6 +2,8 @@
 
 Тестовое задание на позицию Junior Frontend Developer. Простой список задач на **React + TypeScript**, сборка через **Vite**.
 
+**Демо:** https://dima-kelasev.github.io/zaloghub-todo/
+
 ## Функциональность
 
 - Добавление задачи через поле ввода и кнопку (или клавишу Enter)
